@@ -1,0 +1,109 @@
+openapi: 3.1.0
+info:
+  title: Misiones
+  version: "1.0"
+  x-normativa:
+    - seccion: "1.1.6"
+      descripcion: "Cómo se juega"
+    - tabla: "9"
+      descripcion: "Probabilidad de Máster en una misión"
+    - seccion: "2.1"
+      descripcion: "Navegación del módulo Misiones"
+paths:
+  /api/missions:
+    get:
+      summary: Listado de misiones con filtros
+      parameters:
+        - in: query
+          name: heroId
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: nivel
+          schema:
+            type: integer
+        - in: query
+          name: dificultad
+          schema:
+            type: string
+        - in: query
+          name: tipo
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lista de misiones
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MissionListResponse'
+              examples:
+                ejemplo:
+                  value:
+                    items:
+                      - id: M-001
+                        nombre: Sendero de Permafrost
+                        nivelRecomendado: { min: 2, max: 4 }
+                        dificultad: Media
+                        tipo: Historia
+                        xpBase: 120
+                        disponible: true
+                      - id: M-017
+                        nombre: Fortaleza Ígnea
+                        nivelRecomendado: { min: 5, max: 7 }
+                        dificultad: Media
+                        tipo: Asalto
+                        xpBase: 220
+                        disponible: false
+                        motivo: Nivel insuficiente (req ≥5)
+                    total: 2
+components:
+  schemas:
+    Mission:
+      type: object
+      properties:
+        id:
+          type: string
+        nombre:
+          type: string
+        nivelRecomendado:
+          type: object
+          properties:
+            min:
+              type: integer
+            max:
+              type: integer
+        dificultad:
+          type: string
+          enum: [Facil, Media, Dificil, Epica]
+        tipo:
+          type: string
+        xpBase:
+          type: integer
+        objetivo:
+          type: string
+        jefeFinal:
+          type: string
+        probMaestro:
+          type: number
+        requisitos:
+          type: object
+          properties:
+            minNivel:
+              type: integer
+            claseRequerida:
+              type: string
+        disponible:
+          type: boolean
+        motivo:
+          type: string
+    MissionListResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Mission'
+        total:
+          type: integer

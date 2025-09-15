@@ -24,6 +24,8 @@
     "redis": "^5.8.2",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1",
-    "ts-jest": "^29.4.1"
+    "ts-jest": "^29.4.1",
+    "supertest": "^6.3.3",
+    "@types/supertest": "^2.0.12"
   }
 }

@@ -1,0 +1,25 @@
+[
+  {
+    "id": "M-001",
+    "nombre": "Sendero de Permafrost",
+    "nivelRecomendado": { "min": 2, "max": 4 },
+    "dificultad": "Media",
+    "tipo": "Historia",
+    "xpBase": 120,
+    "objetivo": "Escoltar caravana a través del valle helado",
+    "jefeFinal": "Troll de Hielo",
+    "probMaestro": 0.05
+  },
+  {
+    "id": "M-017",
+    "nombre": "Fortaleza Ígnea",
+    "nivelRecomendado": { "min": 5, "max": 7 },
+    "dificultad": "Media",
+    "tipo": "Asalto",
+    "xpBase": 220,
+    "objetivo": "Penetrar la fortaleza y neutralizar al forjador",
+    "jefeFinal": "Señor de la Escoria",
+    "probMaestro": 0.01,
+    "requisitos": { "minNivel": 5 }
+  }
+]
